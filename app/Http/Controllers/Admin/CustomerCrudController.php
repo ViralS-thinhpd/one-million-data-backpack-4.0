@@ -22,6 +22,7 @@ class CustomerCrudController extends CrudController
     public function setup()
     {
         $this->crud->setModel('App\Models\Customer');
+        $this->crud->orderBy('id','DESC');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/customer');
         $this->crud->setEntityNameStrings('customer', 'customers');
     }
@@ -81,6 +82,7 @@ class CustomerCrudController extends CrudController
                 $this->crud->addClause('where', 'created_at', '>=', $dates->from);
                 $this->crud->addClause('where', 'created_at', '<=', $dates->to . ' 23:59:59');
             });
+        $this->crud->enableExportButtons();
     }
 
     protected function setupCreateOperation()

@@ -22,6 +22,7 @@ class BookCrudController extends CrudController
     public function setup()
     {
         $this->crud->setModel('App\Models\Book');
+        $this->crud->orderBy('id','DESC');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/book');
         $this->crud->setEntityNameStrings('book', 'books');
     }
@@ -62,6 +63,7 @@ class BookCrudController extends CrudController
                     $query->where('name','LIKE',"%$value%");
                 });
             } );
+        $this->crud->enableExportButtons();
     }
 
     protected function setupCreateOperation()
