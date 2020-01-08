@@ -30,7 +30,6 @@ class AuthorCrudController extends CrudController
     {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
         $this->crud->setFromDb();
-        $this->crud->orderBy('id','DESC');
         $this->crud->enableExportButtons();
     }
 

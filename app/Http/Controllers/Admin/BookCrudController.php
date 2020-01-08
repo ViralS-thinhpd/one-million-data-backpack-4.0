@@ -22,7 +22,6 @@ class BookCrudController extends CrudController
     public function setup()
     {
         $this->crud->setModel('App\Models\Book');
-        $this->crud->orderBy('id','DESC');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/book');
         $this->crud->setEntityNameStrings('book', 'books');
     }
@@ -39,6 +38,21 @@ class BookCrudController extends CrudController
             'name' => 'author.name',
             'label' => 'Tên tác giả',
             'type' => 'text'
+        ]);
+        $this->crud->addFields([
+            [
+                'name' => 'name',
+                'label' => "Tên sách",
+                'type' => 'text',
+            ],
+//            [  // Select2
+//                'label' => "Tên tác giả",
+//                'type' => 'select2',
+//                'name' => 'author_id', // the db column for the foreign key
+//                'entity' => 'author', // the method that defines the relationship in your Model
+//                'attribute' => 'name', // foreign key attribute that is shown to user
+//                'model' => Author::class, // foreign key model
+//            ]
         ]);
 
         $this->crud->addFilter([ // daterange filter
