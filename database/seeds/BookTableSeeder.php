@@ -13,12 +13,12 @@ class BookTableSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-
+        $authors = \App\Models\Author::all()->count();
         for ($i = 1; $i <= 10000 ;$i++)
         {
             Book::create([
                 'name' => $faker->name,
-                'author_id' => $faker->numberBetween(1, 1000000)
+                'author_id' => $faker->numberBetween(1, $authors)
             ]);
         }
     }
